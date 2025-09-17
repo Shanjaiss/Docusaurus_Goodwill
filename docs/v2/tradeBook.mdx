@@ -1,0 +1,76 @@
+---
+id: tradeBook
+title: Trade Book
+sidebar_label: Trade Book
+hide_table_of_contents: true
+sidebar_position: 10
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a GET call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/tradebook`}</CodeBlock>
+
+      #### RESPONSE ATTRIBUTES
+
+    | Attributes | Datatype | Description             |
+    | ---------- | -------- | ----------------------- |
+    | exchange   | string   | Exchange                |
+    | tsym       | string   | Trading Symbol          |
+    | product    | string   | Product code            |
+    | pricetype  | string   | Price type of the Trade |
+    | trantype   | string   | Transaction type (B/S)  |
+    | qty        | string   | Quantity                |
+    | exchordid  | string   | Exchange Order ID       |
+    | nstordno   | string   | Order ID                |
+    | exchtime   | string   | Exchange time           |
+    | price      | string   | Price                   |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request GET 'https://api.gwcindia.in/v2/tradebook' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": [
+        {
+            "exchange": "NSE",
+            "tsym": "IDEA-EQ",
+            "product": "MIS",
+            "pricetype": "MKT",
+            "trantype": "S",
+            "qty": "1",
+            "exchordid": "1100000010905576",
+            "nstordno": "23031400011069",
+            "exchtime": "14-03-2023 11:33:50",
+            "price": "0.00"
+        }
+    ]
+
+}`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

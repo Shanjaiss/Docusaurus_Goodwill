@@ -1,0 +1,100 @@
+---
+id: introduction
+title: Introduction
+sidebar_label: Introduction
+hide_table_of_contents: true
+sidebar_position: 1
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+   
+      Goodwill API helps traders/investors to build, monitor, and execute trading requirements automatically.
+
+    #### REST API URL
+
+    {`https://api.gwcindia.in/v2/{{api_name}}`}
+
+    <div style={{ marginTop: "1rem" }} />
+
+
+    #### HEADER STRUCTURE
+
+    Each REST call will have **2 compulsory header parameters**:
+
+    1. api_key
+    2. access_token
+
+    | # | Param        | Value        | Description                          |
+    |---|--------------|--------------|--------------------------------------|
+    | 1 | x-api-key    | api_key      | user/partner api_key                 |
+    | 2 | Bearer Token | access_token | Bearer token authorization header    |
+
+    **api_key** is a key allocated to the Goodwill User.
+    If you don't have one, [sign up here](#). Input will be in string format.
+
+    **access_token** is a token received as a response from Login 2FA. Input will be in string format.
+
+    #### SUCCESSFUL RESPONSE
+
+    1. status
+    2. data
+
+    #### ERROR RESPONSE
+
+    1. status
+    2. error_msg
+    3. error_type
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+    <CodeBlock language="text" title="API Endpoint">
+
+{`https://api.gwcindia.in/v2/`}
+
+</CodeBlock>
+
+    <div style={{ marginTop: "13rem" }} />
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request GET 'https://api.gwcindia.in/v2/{{api_name}}' 
+--header 'x-api-key: {{your_api_key}}' 
+--header 'Authorization: Bearer {{your_access_token}}'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "6rem" }} />
+
+    <CodeBlock language="json" title = "Success Response Body">
+      {`{
+
+        "status": "success",
+        "data": {}
+      }`}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Error Response Body">
+      {`{
+
+        "status": "error",
+        "error_msg": "Error Message",
+        "error_type": "GeneralException"
+      }`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

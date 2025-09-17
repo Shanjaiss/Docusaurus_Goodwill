@@ -1,0 +1,80 @@
+---
+id: balance
+title: Balance
+sidebar_label: Balance
+hide_table_of_contents: true
+sidebar_position: 4
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+      To get characters you need to make a GET call to the following url :
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/balance`}</CodeBlock>
+
+      #### RESPONSE ATTRIBUTES
+
+    | Attribute      | Datatype | Description                              |
+    | -------------- | -------- | ---------------------------------------- |
+    | segment        | string   | Segment type - ALL                       |
+    | bookedpnl      | string   | Booked profit and loss                   |
+    | unbookedpnl    | string   | Unbooked profit and loss                 |
+    | openingbalance | string   | Opening balance or cash margin available |
+    | credits        | string   | Credits                                  |
+    | payinamt       | string   | Pay in amount                            |
+    | utilizedamount | string   | Utilized amount                          |
+    | payoutamt      | string   | Pay out amount                           |
+    | varmargin      | string   | Var margin                               |
+    | spanmargin     | string   | Span margin                              |
+    | realisedmtom   | string   | Realised mtom                            |
+    | unrealisedmtom | string   | UnRealised mtom                          |
+    | debits         | string   | Debits                                   |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request GET 'https://api.gwcindia.in/v2/balance' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930''`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+    <CodeBlock language="json" title = "Success Response Body">
+      {`
+        {
+        "status": "success",
+        "data": {
+        "segment": "ALL",
+        "bookedpnl": "1.45",
+        "unbookedpnl": "0",
+        "openingbalance": "2016.03",
+        "credits": "0",
+        "payinamt": "0.00",
+        "utilizedamount": "77.04",
+        "payoutamt": "0.00",
+        "varmargin": "",
+        "spanmargin": "",
+        "realisedmtom": "1.45",
+        "unrealisedmtom": "",
+        "debits": "0"
+        }
+        }`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

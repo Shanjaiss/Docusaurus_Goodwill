@@ -1,0 +1,72 @@
+---
+id: exitPosition
+title: Exit Position
+sidebar_label: Exit Position
+hide_table_of_contents: true
+sidebar_position: 6
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+      To get characters you need to make a POST call to the following url :
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/exitposition`}</CodeBlock>
+
+      #### QUERY PARAMETERS
+
+    | Request Parameter | Description           | Mandatory |
+    | ----------------- | --------------------- | --------- |
+    | segment           | Exchange segment name | Yes       |
+    | product           | Product Code          | Yes       |
+    | netqty            | Net Quantity          | Yes       |
+    | token             | Symbol token          | Yes       |
+    | tsym              | Trading Symbol        | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v1/exitposition' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+    <CodeBlock language="json" title = "Request Example">
+      {`{
+      "segment":"nse_cm",
+      "product":"CNC",
+      "netqty":"1",
+      "token": "11915",
+      "tsym": "YESBANK-EQ"
+
+      }`}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": {
+        "nstordno": "23031400017243"
+    }
+
+    }`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

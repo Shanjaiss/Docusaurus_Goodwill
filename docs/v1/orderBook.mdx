@@ -1,0 +1,100 @@
+---
+id: orderBook
+title: Order Book
+sidebar_label: Order Book
+hide_table_of_contents: true
+sidebar_position: 8
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a GET call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/orderbook`}</CodeBlock>
+
+      #### RESPONSE ATTRIBUTES
+
+    | Attributes     | Datatype | Description                |
+    | -------------- | -------- | -------------------------- |
+    | exchange       | string   | Exchange name              |
+    | token          | string   | Token of the scrip         |
+    | tsym           | string   | Trading symbol             |
+    | product        | string   | Product Code               |
+    | pricetype      | string   | Price type                 |
+    | validity       | string   | validity                   |
+    | price          | string   | Price                      |
+    | trgprc         | string   | Trigger price              |
+    | qty            | string   | Quantity                   |
+    | dscqty         | string   | Disclosed quantity         |
+    | trantype       | string   | Transaction type           |
+    | avgprc         | string   | Average price              |
+    | fillshares     | string   | Filled Quantity            |
+    | remarks        | string   | Remarks                    |
+    | exchordid      | string   | Exchange order id          |
+    | syomorderid    | string   | Syom Order ID              |
+    | nstordno       | string   | Order number               |
+    | orderentrytime | string   | Order entry time           |
+    | exchconfrmtime | string   | Exchange confirmation time |
+    | status         | string   | Status of the order        |
+    | ordvaldate     | string   | Order validity date        |
+    | rejreason      | string   | Rejection reason           |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request GET 'https://api.gwcindia.in/v1/orderbook' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": [
+        {
+            "exchange": "NSE",
+            "token": "14366",
+            "tsym": "IDEA-EQ",
+            "product": "CNC",
+            "pricetype": "MKT",
+            "validity": "DAY",
+            "price": "0.00",
+            "trgprc": "",
+            "qty": "1",
+            "dscqty": "0",
+            "trantype": "S",
+            "avgprc": "6.55",
+            "fillshares": "1",
+            "remarks": "",
+            "exchordid": "1100000017705694",
+            "syomorderid": "",
+            "nstordno": "23031400017243",
+            "orderentrytime": "13:10:32 14-03-2023",
+            "exchconfrmtime": "14-03-2023 13:10:32",
+            "status": "complete",
+            "ordvaldate": "",
+            "rejreason": ""
+        }
+    ]
+
+}`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

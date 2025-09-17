@@ -1,0 +1,80 @@
+---
+id: positionConversion
+title: Position Conversion
+sidebar_label: Position Conversion
+hide_table_of_contents: true
+sidebar_position: 20
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/positionconversion`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+        | Parameter      | Description      | Mandatory |
+        | -------------- | ---------------- | --------- |
+        | exchange       | Exchange name    | Yes       |
+        | tsym           | Trading Symbol   | Yes       |
+        | qty            | Quantity         | Yes       |
+        | prev_product   | Previous Product | Yes       |
+        | trantype       | Transaction Type | Yes       |
+        | new_product    | New Product      | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v1/positionconversion' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 3e81bfb2a1ef11d3bd3e9a8966d4d51e'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+
+        {
+
+            "exchange":"NSE",
+            "tsym":"IDEA-EQ",
+            "qty":"1",
+            "prev_product":"CNC",
+            "trantype":"B",
+            "new_product":"MIS"
+         }
+
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+        "status": "success",
+        "data": {
+            "result": "success"
+        }
+
+}
+
+`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

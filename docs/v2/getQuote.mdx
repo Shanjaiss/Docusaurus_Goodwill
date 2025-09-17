@@ -1,0 +1,122 @@
+---
+id: getQuote
+title: Get Quote
+sidebar_label: Get Quote
+hide_table_of_contents: true
+sidebar_position: 21
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/getquote`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+        | Parameter      | Description      | Mandatory |
+        | -------------- | ---------------- | --------- |
+        | exchange       | Exchange name    | Yes       |
+        | token          | Token            | Yes       |
+
+    #### RESPONSE ATTRIBUTE
+
+        | Attribute         | Datatype | Description          |
+        | ----------------- | -------- | -------------------- |
+        | symbol_name       | string   | Symbol Name          |
+        | trading_symbl     | string   | Trading Symbol       |
+        | token             | string   | Symbol Token         |
+        | company_name      | string   | Company Name         |
+        | last_trade_time   | string   | Last Traded Time     |
+        | last_price        | string   | Last Traded Price    |
+        | change            | string   | Change Price         |
+        | change_per        | string   | Change Percentage    |
+        | last_quantity     | string   | Last Traded Quantity |
+        | buy_quantity      | string   | Buy Quantity         |
+        | sell_quantity     | string   | Sell Quantity        |
+        | volume            | string   | Volume               |
+        | average_price     | string   | Average Price        |
+        | open              | string   | Open                 |
+        | high              | string   | High                 |
+        | low               | string   | Low                  |
+        | close             | string   | Close                |
+        | tick_size         | string   | Tick Size            |
+        | multiplier        | string   | Multiplier           |
+        | lot_size          | string   | Lot Size             |
+        | decimalprecision  | string   | Decimal Precision    |
+        | yearly_low_price  | string   | Yearly Low Price     |
+        | yearly_high_price | string   | Yearly High Price    |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v2/getquote' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 6cb7ac3a5a73831ec88ee8915bee3f2a'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+
+        {
+        "exchange":"NSE",
+        "token":"11915"
+        }
+
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`
+      {
+    "status": "success",
+    "data": {
+        "symbol_name": "YESBANK",
+        "trading_symbl": "YESBANK-EQ",
+        "token": "11915",
+        "company_name": "YES BANK LIMITED",
+        "last_trade_time": "13:18:29",
+        "last_price": "15.65",
+        "change": "0.0",
+        "change_per": "0.0",
+        "last_quantity": "1",
+        "buy_quantity": "37308286",
+        "sell_quantity": "26519029",
+        "volume": "119231098",
+        "average_price": "15.66",
+        "open": "15.70",
+        "high": "15.95",
+        "low": "15.45",
+        "close": "15.65",
+        "tick_size": "0.05",
+        "multiplier": "1",
+        "lot_size": "1",
+        "decimalprecision": "2",
+        "yearly_low_price": "12.10",
+        "yearly_high_price": "24.75"
+    }
+
+}
+
+`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

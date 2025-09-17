@@ -1,0 +1,46 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+/* .heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+} */
+
+.heroBanner {
+  /* background: linear-gradient(90deg, #0f2128, #203b44, #294e5e); */
+  /* background: linear-gradient(90deg, #0e4194, #0d4093, #0d4093); */
+  /* background-color: #0d4093; */
+  background-image: url("/img/ContentBg.png");
+
+  /* Optional: adjust background properties */
+  background-size: cover; /* Cover entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  padding: 100px 0;
+  color: white;
+}
+
+.heroImage {
+  transition: transform 0.3s ease;
+}
+
+.heroImage:hover {
+  transform: scale(1.05);
+}

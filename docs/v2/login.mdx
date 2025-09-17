@@ -1,0 +1,169 @@
+---
+id: login
+title: Login
+sidebar_label: Login
+hide_table_of_contents: true
+sidebar_position: 2
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+
+{/* Left Content Column */}
+
+  <Col xs={24} md={12}>
+    Goodwill Login Flow
+
+    | # | REQUEST | RESPONSE |
+    |---|---------|----------|
+    | 1 | {`https://api.gwcindia.in/v2/login?api_key=xxx`} | Redirects Goodwill Login page |
+    | 2 | After Successful Goodwill Login | request_token will be passed as query string parameter to the registered redirect URL. |
+    | 3 | {`https://api.gwcindia.in/v2/login-response`} with Signature | User Login Session Details |
+
+    #### Login Response
+    | Rest Properties | Description |
+    |-----------------|-------------|
+    | Name | Login Response |
+    | Description | Gives the login session details with access token |
+    | URL | {`https://api.gwcindia.in/v2/login-response`} |
+    | Input | YES |
+
+    #### Input
+    | # | Parameter | Description |
+    |---|-----------|-------------|
+    | 1 | api_key | API Key |
+    | 2 | request_token | Received as Query String to the Redirect URL |
+    | 3 | signature | Hash value using request_token as key |
+
+    #### SUCCESSFUL RESPONSE
+    | # | Parameter | Description |
+    |---|-----------|-------------|
+    | 1 | client_id | Client Unique ID |
+    | 2 | name | Account name |
+    | 3 | email | Email id of user |
+    | 4 | exarr | Enabled exchange in a JSON array |
+    | 5 | prarr | Enabled product type in a JSON array |
+    | 6 | orarr | Enabled order type in a JSON array |
+    | 7 | exchDetail | Exchange details JSON object |
+    | 8 | usersessionid | User session ID (Used in web sockets) |
+    | 9 | access_token | Access Token |
+
+    <div style={{ marginTop: "7rem" }} />
+
+    #### ERROR RESPONSE
+    | # | Parameter | Description |
+    |---|-----------|-------------|
+    | 1 | status | error |
+    | 2 | error_msg | Error Message |
+    | 3 | error_type | Error Type |
+
+    | # | Error Messages | Description |
+    |---|----------------|-------------|
+    | 1 | Invalid API key or API key expired | Input API Key is invalid or expired |
+    | 2 | Invalid Signature | Input Signature is invalid |
+    | 3 | Invalid Request Token | Input Session ID and Request Token is Invalid |
+
+    #### Signature
+    To make the request secure, we have implemented parameter posting with signature (i.e. SHA-256 of checksum). The signature parameter is created by hashing the values of the following parameters:
+
+    1. API Key
+    2. request_token
+    3. API Secret
+
+    checksum = API Key + request_token + API Secret
+    signature = SHA-256 of checksum
+
+    The `signature` parameter is **mandatory** and needs to be added in login-response API.
+
+  </Col>
+
+{/* Right CodeBlock Column */}
+
+  <Col xs={24} md={12} style={{
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+      <div style={{ marginTop: "15rem" }} />
+
+
+    <CodeBlock language="text" title = "Example">
+      {`https://{{registered redirect URL}}?request_token={{request_token}}`}
+    </CodeBlock>
+
+        <div style={{ marginTop: "22rem" }} />
+
+    <CodeBlock language="json" title = "Input Request">
+      {`{
+
+"api_key": "xxxxx",
+"request_token": "5ca9e0b42c4e94759030e850",
+"signature": "f110112a934b7a867dfe611abb41b7274e"
+}`}
+
+</CodeBlock>
+
+<div style={{ marginTop: "4rem" }} />
+
+    <CodeBlock language="json" title = "Success Response Body">
+      {`{
+
+"status":"success",
+"data":{
+"clnt_id":"GQ1A0007",
+"name":"MANOHARAN SARAVANABHAVAN",
+"email":"SARAVANAKIRAN2012@GMAIL.COM",
+"exarr":["BSE","NFO","NSE","MCX","ICEX"],
+"prarr":["BO","CNC","CO","MIS","NRML"],
+"orarr":["L","MKT","SL","SL-M"],
+"exchDetail":{
+"EQUITY":[
+{"product":["BO","CNC","CO","MIS","NRML"],"exchseg":"bse_cm","exch":"BSE"},
+{"product":["BO","CNC","CO","MIS","NRML"],"exchseg":"nse_cm","exch":"NSE"}
+],
+"DERIVATIVE":[
+{"product":["BO","CO","MIS","NRML"],"exchseg":"nse_fo","exch":"NFO"}
+],
+"COMMODITY":[
+{"product":["BO","CO","MIS","NRML"],"exchseg":"mcx_fo","exch":"MCX"},
+{"product":["BO","CO","MIS","NRML"],"exchseg":"icx_fo","exch":"ICEX"}
+]
+},
+"usersessionid":"3279379865",
+"access_token":"8a5e32e1126025fefbcefc88eb6eb9a9"
+}
+}`}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Error Response Body">
+      {`{
+
+"status": "error",
+"error_msg": "Invalid Signature",
+"error_type": "E"
+}`}
+
+</CodeBlock>
+
+<div style={{ marginTop: "22rem" }} />
+
+    <CodeBlock language="text">
+      {`Example:
+
+API Key = "xxxxx"
+request_token = "5ca9e0b42c4e94759030e850"
+API Secret = "yyyyy"
+
+checksum = 'xxxxx5ca9e0b42c4e94759030e850yyyyy'
+signature = hash('sha256', 'xxxxx5ca9e0b42c4e94759030e850yyyyy')`}
+
+</CodeBlock>
+
+  </Col>
+
+</Row>

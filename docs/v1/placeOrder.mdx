@@ -1,0 +1,87 @@
+---
+id: placeOrder
+title: Place Order
+sidebar_label: Place Order
+hide_table_of_contents: true
+sidebar_position: 11
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/placeorder`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+    | Request Parameter | Description                                                                                                                      | Mandatory |
+    | ----------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+    | tsym              | Trading Symbol                                                                                                                   | Yes       |
+    | exchange          | Exchange name                                                                                                                    | Yes       |
+    | trantype          | Transaction Type                                                                                                                 | Yes       |
+    | validity          | Validity - It can be one of the following: DAY, IOC                                                                              | Yes       |
+    | pricetype         | It can be one of the following: MKT - Market Order, L - Limit Order, SL-L - Stop Loss Limit Order, SL-M - Stop Loss Market Order | Yes       |
+    | qty               | Quantity                                                                                                                         | Yes       |
+    | discqty           | Disclosed Quantity                                                                                                               | Yes       |
+    | price             | Price                                                                                                                            | Yes       |
+    | trgprc            | Trigger Price                                                                                                                    | Yes       |
+    | product           | Product Code                                                                                                                     | Yes       |
+    | amo               | AMO - It can be one of the following: YES, NO                                                                                    | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v1/placeorder' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+        {
+        "tsym": "YESBANK-EQ",
+        "exchange":"NSE",
+        "trantype":"B",
+        "validity":"DAY",
+        "pricetype":"MKT",
+        "qty":"1",
+        "discqty":"0",
+        "price":"0",
+        "trgprc":"0",
+        "product":"CNC",
+        "amo":"NO"
+
+    }
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": {
+        "nstordno": "220104000034606"
+    }
+
+    }
+    `}
+
+</CodeBlock>
+
+  </Col>
+</Row>

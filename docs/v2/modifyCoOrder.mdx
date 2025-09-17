@@ -1,0 +1,90 @@
+---
+id: modifyCoOrder
+title: Modify CO Order
+sidebar_label: Modify CO Order
+hide_table_of_contents: true
+sidebar_position: 16
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/modifycoorder`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+| Request Parameter | Description                                                                                                                      | Mandatory |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| exchange          | Exchange name                                                                                                                    | Yes       |
+| tsym              | Trading Symbol                                                                                                                   | Yes       |
+| nstordno          | Order ID                                                                                                                         | Yes       |
+| pricetype         | It can be one of the following: MKT - Market Order, L - Limit Order, SL-L - Stop Loss Limit Order, SL-M - Stop Loss Market Order | Yes       |
+| price             | Price at which the order was placed                                                                                              | Yes       |
+| qty               | Quantity with which the order was placed                                                                                         | Yes       |
+| discqty           | Disclosed Quantity                                                                                                               | Yes       |
+| trgprc            | Trigger Price                                                                                                                    | Yes       |
+| validity          | Validity                                                                                                                         | Yes       |
+| trailing_ticks    | Trailing Ticks                                                                                                                   | Yes       |
+| stoploss          | Stoploss                                                                                                                         | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v2/modifycoorder' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 3e81bfb2a1ef11d3bd3e9a8966d4d51e'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+
+
+        {
+           "exchange":"NSE",
+            "tsym": "ZOMATO-EQ",
+            "nstordno":"23042400032632",
+            "pricetype":"SL-L",
+            "price":"74",
+            "qty":"1",
+            "discqty":"0",
+            "trgprc":"78",
+            "validity":"DAY",
+            "trailing_ticks":"0",
+            "stoploss":"1"
+
+        }
+
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": {
+        "result": "23042400032632"
+    }
+
+    }
+    `}
+
+</CodeBlock>
+
+  </Col>
+</Row>

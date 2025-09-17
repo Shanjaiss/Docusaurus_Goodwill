@@ -1,0 +1,60 @@
+---
+id: logout
+title: Logout
+sidebar_label: Logout
+hide_table_of_contents: true
+sidebar_position: 23
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a GET call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/logout`}</CodeBlock>
+
+    #### RESPONSE ATTRIBUTE
+
+        | Attribute      | Datatype      | Description |
+        | -------------- | --------------| ------------|
+        | check          | string        | OK/NOT_OK   |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v2/fetchsymbol' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 6cb7ac3a5a73831ec88ee8915bee3f2a'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+
+    <CodeBlock language="json" title = "Response Example">
+      {`
+      {
+    "status": "success",
+    "data": {
+        "check": "OK"
+    }
+
+}
+
+`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

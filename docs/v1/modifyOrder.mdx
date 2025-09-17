@@ -1,0 +1,90 @@
+---
+id: modifyOrder
+title: Modify Order
+sidebar_label: Modify Order
+hide_table_of_contents: true
+sidebar_position: 14
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/modifyorder`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+| Request Parameter | Description                                                                                                                      | Mandatory |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| exchange          | Exchange name                                                                                                                    | Yes       |
+| tsym              | Trading Symbol                                                                                                                   | Yes       |
+| nstordno          | Order ID                                                                                                                         | Yes       |
+| trantype          | Transaction Type(B/S)                                                                                                            | Yes       |
+| pricetype         | It can be one of the following: MKT - Market Order, L - Limit Order, SL-L - Stop Loss Limit Order, SL-M - Stop Loss Market Order | Yes       |
+| price             | Price at which the order was placed                                                                                              | Yes       |
+| qty               | Quantity with which the order was placed                                                                                         | Yes       |
+| discqty           | Disclosed Quantity                                                                                                               | Yes       |
+| trgprc            | Trigger Price                                                                                                                    | Yes       |
+| validity          | Validity                                                                                                                         | Yes       |
+| filledqty         | Filledqty                                                                                                                        | Yes       |
+| product           | Product Code                                                                                                                     | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v1/modifyorder' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 3e81bfb2a1ef11d3bd3e9a8966d4d51e' `}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+
+
+        { "exchange":"NSE",
+        "tsym": "YESBANK-EQ",
+        "nstordno":"23031400017379",
+        "trantype":"B",
+        "pricetype":"MKT",
+        "price":"0",
+        "qty":"1",
+        "discqty":"0",
+        "trgprc":"0",
+        "validity":"DAY",
+        "filledqty":"1",
+        "product":"CNC"
+        }
+
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": {
+        "result": "23031400017379"
+    }
+
+    }
+    `}
+
+</CodeBlock>
+
+  </Col>
+</Row>

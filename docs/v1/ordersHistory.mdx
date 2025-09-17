@@ -1,0 +1,172 @@
+---
+id: ordersHistory
+title: Orders History
+sidebar_label: Orders History
+hide_table_of_contents: true
+sidebar_position: 9
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/orderhistory`}</CodeBlock>
+
+    #### REQUEST ATTRIBUTES
+
+    | Request Parameter | Description  | Mandatory |
+    | ----------------- | ------------ | --------- |
+    | nstordno          | Order Number | Yes       |
+
+      #### RESPONSE ATTRIBUTES
+
+    | #   | Parameter        | Description         |
+    | --- | ---------------- | ------------------- |
+    | 1   | exchange         | Exchange            |
+    | 2   | tsym             | Trading symbol      |
+    | 3   | product          | Product code        |
+    | 4   | pricetype        | Price type          |
+    | 5   | duration         | Order duration      |
+    | 6   | price            | Price               |
+    | 7   | trgprc           | Trigger Price       |
+    | 8   | qty              | Quantity            |
+    | 9   | disclosedqty     | Disclosed quantity  |
+    | 10  | trantype         | Transaction type    |
+    | 11  | avgprc           | Average price       |
+    | 12  | filledshares     | Filled Shares       |
+    | 13  | orderusermessage | Order User Message  |
+    | 14  | exchordid        | Exchange Order id   |
+    | 15  | nstordno         | Order number        |
+    | 17  | status           | Status of the order |
+    | 18  | rejectionreason  | Rejection reason    |
+    | 19  | exchtimestamp    | Exchange time stamp |
+    | 20  | reqid            | Request id          |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v1/orderhistory' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+        {
+        "nstordno": "220104000034606"
+        }
+        `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": [
+        {
+            "exchange": "NSE",
+            "tsym": "IDEA-EQ",
+            "product": "MIS",
+            "pricetype": "MKT",
+            "duration": "DAY",
+            "price": "0.00",
+            "trgprc": "",
+            "qty": "1",
+            "disclosedqty": "0",
+            "trantype": "B",
+            "avgprc": "6.60",
+            "filledshares": "1",
+            "orderusermessage": "",
+            "exchordid": "1100000017915998",
+            "nstordno": "23031400017379",
+            "status": "complete",
+            "rejectionreason": "",
+            "exchtimestamp": "14-03-2023 13:13:59",
+            "nestreqid": ""
+        },
+        {
+            "exchange": "NSE",
+            "tsym": "IDEA-EQ",
+            "product": "MIS",
+            "pricetype": "MKT",
+            "duration": "DAY",
+            "price": "0.00",
+            "trgprc": "",
+            "qty": "1",
+            "disclosedqty": "0",
+            "trantype": "B",
+            "avgprc": "",
+            "filledshares": "",
+            "orderusermessage": "",
+            "exchordid": "1100000017915998",
+            "nstordno": "23031400017379",
+            "status": "open",
+            "rejectionreason": "",
+            "exchtimestamp": "14-03-2023 13:13:59",
+            "nestreqid": ""
+        },
+        {
+            "exchange": "NSE",
+            "tsym": "IDEA-EQ",
+            "product": "MIS",
+            "pricetype": "MKT",
+            "duration": "DAY",
+            "price": "0.00",
+            "trgprc": "",
+            "qty": "1",
+            "disclosedqty": "0",
+            "trantype": "B",
+            "avgprc": "",
+            "filledshares": "",
+            "orderusermessage": "",
+            "exchordid": "",
+            "nstordno": "23031400017379",
+            "status": "open",
+            "rejectionreason": "",
+            "exchtimestamp": "",
+            "nestreqid": ""
+        },
+        {
+            "exchange": "NSE",
+            "tsym": "IDEA-EQ",
+            "product": "MIS",
+            "pricetype": "MKT",
+            "duration": "DAY",
+            "price": "0.00",
+            "trgprc": "",
+            "qty": "1",
+            "disclosedqty": "0",
+            "trantype": "B",
+            "avgprc": "",
+            "filledshares": "",
+            "orderusermessage": "",
+            "exchordid": "",
+            "nstordno": "23031400017379",
+            "status": "open",
+            "rejectionreason": "",
+            "exchtimestamp": "",
+            "nestreqid": ""
+        }
+    ]
+
+}`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

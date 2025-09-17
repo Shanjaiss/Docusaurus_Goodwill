@@ -1,0 +1,80 @@
+---
+id: holdings
+title: Holdings
+sidebar_label: Holdings
+hide_table_of_contents: true
+sidebar_position: 7
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a GET call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v1/holdings`}</CodeBlock>
+
+      #### RESPONSE ATTRIBUTES
+
+    | Parameter     | Description                   |
+    | ------------- | ----------------------------- |
+    | exchange      | Exchange name                 |
+    | token         | Token of the scrip            |
+    | tsym          | Trading symbol                |
+    | isin          | ISIN                          |
+    | holdqty       | Holding quantity              |
+    | btst_qty      | BTST quantity                 |
+    | sellable_qty  | Sellable quantity             |
+    | average_price | Average price                 |
+    | ltp           | Last trade price of the scrip |
+    | pcode         | Product code                  |
+    | coll_qty      | Collateral quantity           |
+    | coll_type     | Collateral type               |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request GET 'https://api.gwcindia.in/v1/holdings' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 05b8167eed78367034cb5ed4a8c15930'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+    "status": "success",
+    "data": [
+        {
+            "exchange": "NSE",
+            "token": "11915",
+            "tsym": "YESBANK-EQ",
+            "isin": "INE528G01035",
+            "holdqty": "0",
+            "btst_qty": "1",
+            "sellable_qty": "1",
+            "average_price": "15.75",
+            "ltp": "15.55",
+            "pcode": "CNC",
+            "coll_qty": "",
+            "coll_type": ""
+        }
+    ]
+
+}`}
+
+</CodeBlock>
+
+  </Col>
+</Row>

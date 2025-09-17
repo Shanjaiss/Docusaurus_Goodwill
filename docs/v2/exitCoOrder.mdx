@@ -1,0 +1,68 @@
+---
+id: exitCoOrder
+title: Exit CO Order
+sidebar_label: Exit CO Order
+hide_table_of_contents: true
+sidebar_position: 19
+---
+
+import { Row, Col } from "antd";
+import CodeBlock from "@theme/CodeBlock";
+
+<Row gutter={[32, 32]} wrap>
+  <Col xs={24} md={12}>
+    
+     To get characters you need to make a POST call to the following url 
+      <CodeBlock language="text">{`https://api.gwcindia.in/v2/exitcoorder`}</CodeBlock>
+
+    #### QUERY PARAMETERS
+
+| Request Parameter | Description  | Mandatory |
+| ----------------- | ------------ | --------- |
+| nstordno          | Order Number | Yes       |
+
+  </Col>
+
+  <Col xs={24} md={12} lg = {12} style={{
+  
+    borderRadius: '8px',
+    padding: '1rem',
+    fontFamily: 'monospace',
+    overflowX: 'auto'
+  }}>
+
+{" "}
+
+<CodeBlock language="bash" title="curl / cURL">
+  {`curl --location --request POST 'https://api.gwcindia.in/v2/exitcoorder' \
+--header 'x-api-key: 2e4c1f0ac084dd6b30fd808e016be3f0' \
+--header 'Authorization: Bearer 3e81bfb2a1ef11d3bd3e9a8966d4d51e'`}
+</CodeBlock>
+
+    <div style={{ marginTop: "1rem" }} />
+
+     <CodeBlock language="json" title = "Request Example">
+      {`
+
+        {
+            "nstordno":"220106000024964"
+        }
+
+    `}
+
+</CodeBlock>
+
+    <CodeBlock language="json" title = "Response Example">
+      {`{
+            "status": "success",
+            "data": {
+                "result": "success"
+            }
+        }
+
+`}
+
+</CodeBlock>
+
+  </Col>
+</Row>
