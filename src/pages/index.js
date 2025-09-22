@@ -26,7 +26,7 @@ function HomepageHeader() {
             <div className={styles.buttons} style={{ marginTop: 24 }}>
               <Link
                 className="button button--secondary button--lg"
-                to="/api/v2/introduction"
+                to="/api/v1/introduction"
               >
                 API Documentation
               </Link>

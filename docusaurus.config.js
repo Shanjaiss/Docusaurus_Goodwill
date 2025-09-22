@@ -96,15 +96,15 @@ const config = {
         sidebarPath: require.resolve("./sidebarsV1.js"),
       },
     ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "v2",
-        path: "docs/v2",
-        routeBasePath: "api/v2",
-        sidebarPath: require.resolve("./sidebarsV2.js"),
-      },
-    ],
+    // [
+    //   "@docusaurus/plugin-content-docs",
+    //   {
+    //     id: "v2",
+    //     path: "docs/v2",
+    //     routeBasePath: "api/v2",
+    //     sidebarPath: require.resolve("./sidebarsV2.js"),
+    //   },
+    // ],
     // [
     //   "@easyops-cn/docusaurus-search-local",
     //   {
@@ -243,19 +243,25 @@ const config = {
             target: "_self",
           },
 
+          // {
+          //   label: "Api Docs",
+          //   position: "right",
+          //   items: [
+          //     {
+          //       label: "Version 2  🆕",
+          //       to: "/api/v2/introduction",
+          //     },
+          //     {
+          //       label: "Version 1",
+          //       to: "/api/v1/introduction",
+          //     },
+          //   ],
+          // },
           {
+            href: "/api/v1/introduction",
             label: "Api Docs",
             position: "right",
-            items: [
-              {
-                label: "Version 2  🆕",
-                to: "/api/v2/introduction",
-              },
-              {
-                label: "Version 1",
-                to: "/api/v1/introduction",
-              },
-            ],
+            target: "_self",
           },
 
           {
